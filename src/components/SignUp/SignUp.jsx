@@ -18,8 +18,13 @@ const SignUp = () => {
         // password validation
         if(password !== confirmPassword){
             setError('Your password do not match')
-            
+            return; //1
         }
+        else if(password.length < 6){
+            setError('Password must be 6 characters or longer')
+            return; //2
+        }
+        
     }
     return (
         <div className='form-container'>
@@ -40,6 +45,7 @@ const SignUp = () => {
                 <input className='btn-submit' type="submit" value="Sign Up" />
             </form>
             <p><small>Already have an account? <Link to="/login">Login</Link></small></p>
+            <p className='text-error'>{error}</p>
         </div>
     );
 };
