@@ -6,7 +6,7 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const Header = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     console.log(user)
 
     return (
@@ -18,7 +18,9 @@ const Header = () => {
                 <Link to="/inventory">Inventory</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/sign-up">Sign up</Link>
-                {user && <span>Welcome {user.email} </span> }
+                {
+                    user && <span>Welcome {user.email} </span>
+                }
             </div>
         </nav>
     );
