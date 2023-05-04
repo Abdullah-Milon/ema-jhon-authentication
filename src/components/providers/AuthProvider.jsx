@@ -25,7 +25,7 @@ const AuthProvider = ({children}) => {
     // observer user auth state
     useEffect(() =>{
         // onAuthStateChanged(auth, currentUser =>{
-     const unsubscribe =   onAuthStateChanged(auth, currentUser =>{
+     const unsubscribe =   onAuthStateChanged(auth, currentUser =>{ //c
             setUser(currentUser)
         })
         //  stop observing while unmounting
