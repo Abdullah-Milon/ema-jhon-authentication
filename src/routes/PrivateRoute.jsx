@@ -1,0 +1,18 @@
+import React, { useContext } from 'react';
+import { AuthContext } from '../components/providers/AuthProvider';
+import { Navigate } from 'react-router-dom';
+
+const PrivateRoute = ({children}) => {
+    const {user, loading} = useContext(AuthContext);
+
+    if(loading){
+        return <div>Loading...</div>
+    }
+    if(user){
+        return children;
+    }
+    // যদি ইউজার থাকে তাহলে রিটার্ন উপরেরটা না থাকলে নিচেরটা এক লাইনে 
+    return <Navigate to="/login"></Navigate>;
+};
+
+export default PrivateRoute;
