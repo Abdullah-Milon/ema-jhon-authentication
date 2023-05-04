@@ -1,13 +1,19 @@
 import React, { useContext, useState } from 'react';
 import './Login.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Login = () => {
 
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('')
+    const [success, setSuccess] = useState('');
+
     const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate( );
+    const location = useLocation();
+    console.log(location)
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = event =>{
         event.preventDefault();
@@ -24,6 +30,7 @@ const Login = () => {
             setError('');
             event.target.reset(); //3
             // form.reset(); 3
+            navigate(from, {replace: true})
             setSuccess('User login successfully.')
         })
         .catch(error =>{
@@ -31,7 +38,7 @@ const Login = () => {
             setError(error.message)
         })
 
-            
+
     }
 
     return (
